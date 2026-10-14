@@ -39,3 +39,28 @@ del commit. No requiere secrets ni credenciales de Surge.
 
 Esta practica es independiente del parcial de despliegue web:
 https://github.com/juliorijo/parcial-surge
+
+## Practica 6: servidor web Nginx con Docker
+
+La carpeta `src` contiene `index.html`, que Nginx sirve desde
+`/usr/share/nginx/html` mediante el volumen definido en `docker-compose.yml`.
+El sitio queda disponible en `http://localhost:8080`.
+
+Con Docker y Docker Compose instalados, inicia el servidor desde la raiz del
+repositorio:
+
+```powershell
+docker compose up -d
+```
+
+Verifica la respuesta y el contenido de la pagina:
+
+```powershell
+Invoke-WebRequest http://localhost:8080
+```
+
+Para detener y eliminar el contenedor:
+
+```powershell
+docker compose down
+```
