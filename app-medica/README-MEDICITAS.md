@@ -10,6 +10,7 @@ Dashboard de demostración basado en la plantilla gratuita **SB Admin 2** de Sta
 4. Comprueba los apartados Resumen, Pacientes, Doctores, Agendar cita e Historial clínico.
 
 Las rutas CSS, JavaScript, imágenes y enlaces entre páginas son relativas al proyecto.
+El archivo `.replit` configura el comando `php -S 0.0.0.0:8080 -t .` para iniciar el servidor PHP.
 
 ## Publicar en Replit
 
