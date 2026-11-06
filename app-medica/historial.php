@@ -1,0 +1,15 @@
+<?php
+$currentPage = 'historial.php';
+require __DIR__ . '/includes/config.php';
+renderHeader('Historial clínico', 'Notas de atención y antecedentes recientes de tus pacientes.');
+$records = [
+    ['patient' => 'Lucía Fernández', 'doctor' => 'Dra. Valeria Cruz', 'date' => '05 nov. 2026', 'type' => 'Consulta general', 'summary' => 'Control de rutina. Se recomienda mantener hidratación y volver en tres meses.', 'initials' => 'LF', 'color' => 'lavender'],
+    ['patient' => 'Mateo Castillo', 'doctor' => 'Dr. Rafael Núñez', 'date' => '04 nov. 2026', 'type' => 'Seguimiento', 'summary' => 'Evolución favorable. Tratamiento actual bien tolerado por el paciente.', 'initials' => 'MC', 'color' => 'peach'],
+    ['patient' => 'Camila Santos', 'doctor' => 'Dr. Rafael Núñez', 'date' => '03 nov. 2026', 'type' => 'Cardiología', 'summary' => 'Signos estables. Próxima evaluación recomendada en seis meses.', 'initials' => 'CS', 'color' => 'mint'],
+    ['patient' => 'Diego Morales', 'doctor' => 'Dra. Valeria Cruz', 'date' => '30 oct. 2026', 'type' => 'Consulta general', 'summary' => 'Consulta preventiva. Se indican análisis de laboratorio de control.', 'initials' => 'DM', 'color' => 'blue'],
+];
+?>
+<div class="history-layout"><section class="content-panel history-panel"><div class="table-toolbar"><div><h2>Atenciones recientes</h2><p>Notas clínicas registradas en la demostración</p></div><label class="search-field"><?= icon('search') ?><input type="search" placeholder="Buscar paciente..." aria-label="Buscar en historial" data-table-search></label></div><div class="history-list">
+    <?php foreach ($records as $record): ?><article class="history-record" data-search-row><div class="record-date"><span><?= e(substr($record['date'], 0, 2)) ?></span><small><?= e(substr($record['date'], 4, 3)) ?></small></div><span class="avatar avatar-<?= e($record['color']) ?>"><?= e($record['initials']) ?></span><div class="record-content"><div class="record-title"><div><h3><?= e($record['patient']) ?></h3><span><?= e($record['type']) ?></span></div><span class="record-doctor"><?= e($record['doctor']) ?></span></div><p><?= e($record['summary']) ?></p></div><button class="icon-button record-more js-demo-action" type="button" aria-label="Más opciones para historial de <?= e($record['patient']) ?>" data-message="Las opciones clínicas estarán disponibles al conectar datos.">•••</button></article><?php endforeach; ?>
+    </div><p class="empty-search" hidden>No hay registros que coincidan con la búsqueda.</p></section><aside class="history-aside"><div class="history-callout"><span class="callout-line"></span><h2>La continuidad también cuida.</h2><p>Un historial claro ayuda al equipo a dar una atención más cercana en cada visita.</p><span class="callout-icon"><?= icon('file') ?></span></div><section class="content-panel privacy-note"><span class="privacy-lock">+</span><div><strong>Datos de demostración</strong><p>Este proyecto no almacena información médica ni datos personales.</p></div></section></aside></div>
+<?php renderFooter(); ?>
